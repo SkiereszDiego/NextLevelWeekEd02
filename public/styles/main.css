@@ -1,0 +1,105 @@
+/*CSS é cascating style sheet*/
+
+/* Com essa chave eu estou me referindo ao elemento principal do html */
+:root {
+    /*Variaveis CSS*/
+    --color-background: #F0F0F7;
+    --color-primary-lighter: #9871F5;
+    --color-primary-light: #916BEA;
+    --color-primary: #8257E5;
+    --color-primary-dark: #774DD6;
+    --color-primary-darker: #6842c2;
+    --color-secondary: #04D361;
+    --color-secondary-dark: #04BF58;
+    --color-title-in-primary: #FFFFFF;
+    --color-text-in-primary: #D4C2FF;
+    --color-text-title: #32264D;
+    --color-text-complement: #9C98A6;
+    --color-text-base: #6A6180;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-button-text: #FFFFFF;
+    --color-box-base: #FFFFFF;
+    --color-box-footer: #FAFAFC;
+    --color-small-info: #C1BCCC;
+
+    /*
+    Tamanho da fonte padrão: 16px - 100% - 1rem
+    rem vai ser relativo root element(flexivel)
+    % é relativo ao que é superior a ele (flexivel)
+    px é o mais forte
+    */
+    font-size: 60%; /* controle das medidas rem */
+}
+/*variavel pega o valor hexadecimal da referencia */
+
+*{
+    /*Asterisco significa muitos elementos
+        ele vai riscar no site as config padroes e aplicar estas F12 para ver
+    */
+    margin: 0;
+    padding: 0;
+    /*Medir a caixa pela borda da caixa. Calculo do width. Pode vazar da caixa o texto*/
+    box-sizing: border-box;
+
+
+}
+
+/*boa pratica colocar o height no body e html*/
+html,
+body{
+   /*100vh quebra o body em 100 pedacinhos*/
+    height: 100vh;
+}
+
+body{
+    background-color: var(--color-background);
+    /*
+    Pego a caixa body e todos elementos dela tem q ser flexiveis
+    display block ocupa toda linha que ele estiver pex h1
+    display(exibição) inline significa que se estiver outro elemento inline, ele fica ao lado pex <a> e o <span>
+    display flex muda o comportamento padrão
+    */
+    display: flex;
+    /*As prop align e justify só funciona com display flex*/
+    align-items: center;
+    justify-content: center;
+}
+
+body,
+input,
+button,
+textarea{
+    /*  font: 500 1.6rem Poppins; */
+    font-weight: 500;
+    font-family: Poppins;
+    font-size: 1.6rem;
+    color: var(--color-text-base);
+}
+
+#container {
+    
+    /*
+    Box model - limites da caixa
+    border: 1px solid red;
+    Preenchimento da caixa
+    padding: 40px;
+    margin: 60px;
+    quebra em 100 pedacinhos e pega 90 Largura da view port (visao) 
+    */
+    width: 90vw;
+    max-width: 700px;
+  
+}
+
+@media (min-width: 700px){
+    :root{
+        /*Todo 1rem vai ser relativo a 10px*/
+        font-size:62.5%;
+    }
+}
+
+
+
+
+
