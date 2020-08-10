@@ -64,40 +64,49 @@
         </header>
         
         <main>
-            <!--fazendo uso do obj do server-->
-            <!--<h1>{{title}}</h1>-->
-            <!--Nunjucks habilita uma estrutura de repetição-->
-            {%for proffy in proffys %}
-                <article class="teacher-item">
-                    <header>
-                        <img 
-                            src="{{proffy.avatar}}" 
-                            alt="{{proffy.name}}">
-                        <div>
-                            <strong>{{proffy.name}}</strong>
-                            <span>{{proffy.subject}}</span>
-                        </div>
-                    </header>
-                
-                    <p>{{proffy.bio}}</p>
-                
-                    <footer>
-                        <p>Preço/hora<strong>R$ {{proffy.cost}}</strong>
-                        </p>
-                        
-                        <!--
-                        <button type="button">
-                            <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
-                        </button>
-                        -->
-                        <!--Troca o botao pelo codigo especial, onde tem a API do whatsapp, q coloca o 55 e o nº da pessoa, e vai add um txt-->
-                        <a href="http://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=Tenho interesse na sua aula de {{proffy.subject}} {{proffy.name}}" class="button" target="_blank">
-                            <img src="/images/icons/whatsapp.svg" alt="Whatsapp"> Entrar em contato
-                        </a>
-                    </footer>
-                </article>
 
-            {%endfor%}
+
+            {% if proffys == ""%}
+                <p class="no results">Nenhum professor encontrado com a sua pesquisa.</p>
+
+
+            {% else %}
+                <!--fazendo uso do obj do server-->
+                <!--<h1>{{title}}</h1>-->
+                <!--Nunjucks habilita uma estrutura de repetição-->
+                {% for proffy in proffys %}
+                    <article class="teacher-item">
+                        <header>
+                            <img 
+                                src="{{proffy.avatar}}" 
+                                alt="{{proffy.name}}">
+                            <div>
+                                <strong>{{proffy.name}}</strong>
+                                <span>{{proffy.subject}}</span>
+                            </div>
+                        </header>
+                    
+                        <p>{{proffy.bio}}</p>
+                    
+                        <footer>
+                            <p>Preço/hora<strong>R$ {{proffy.cost}}</strong>
+                            </p>
+                            
+                            <!--
+                            <button type="button">
+                                <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+                            </button>
+                            -->
+                            <!--Troca o botao pelo codigo especial, onde tem a API do whatsapp, q coloca o 55 e o nº da pessoa, e vai add um txt-->
+                            <a href="http://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=Tenho interesse na sua aula de {{proffy.subject}} {{proffy.name}}" class="button" target="_blank">
+                                <img src="/images/icons/whatsapp.svg" alt="Whatsapp"> Entrar em contato
+                            </a>
+                        </footer>
+                    </article>
+
+                {%endfor%}
+            
+            {% endif %}
     
         </main>
     </div>

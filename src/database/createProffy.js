@@ -1,0 +1,58 @@
+//Aqui sera feita toda logica de inserir daddos no DB
+module.exports = async function(db, {proffyValue, classValue, classScheduleValues}) {
+    //inserir dados na tabela de teachers. Son consigo inserir classes se tiver o id do teacher e isso demora pra ser exect
+    const insertedProffy = await db.run(`
+        INSERT INTO proffys (
+            name,
+            avatar,
+            whatsapp,
+            bio
+        ) VALUES (
+            "${proffyValue.name}",
+            "${proffyValue.avatar}",
+            "${proffyValue.whatsapp}",
+            "${proffyValue.bio}"
+        );
+    `)
+
+    const proffy_id = insertedProffy.lastID
+
+    //inserir dados na tabela classes
+
+    const insertedClass = await db.run(`
+            INSERT INTO classes (
+                subject,
+                cost,
+                proffy_id                
+            ) VALUES (
+                "${classValue.subject}",
+                "${classValue.cost}",
+                "${proffy_id}"
+            );
+    `)
+
+    const class_id = insertedClass.lastID
+
+    //inserir dados na tabela classSchedule
+    //O map faz um for each e agrupa em um novo array. Guardr o db num array para exec depois
+    //cada vez que essa função abaixo for rodada ela esta se referindo a UM objeto do array schedule
+    const insertedAllClassScheduleValues = classScheduleValues.map((classScheduleValue) => {
+        return db.run(`
+            INSERT INTO class_schedule (
+                class_id,
+                weekday,
+                time_from,
+                time_to
+            ) VALUES (
+                "${class_id}",
+                "${classScheduleValue.weekday}",
+                "${classScheduleValue.time_from}",
+                "${classScheduleValue.time_to}"
+            );
+        `)
+    }) 
+    
+    //aqui vou executar todos os db.runs() das class_schedules
+    //Promessa de q vou rodar, se der certo blz senao de certo te aviso. O array anterior é de muitas promessas
+    await Promise.all(insertedAllClassScheduleValues)
+}
