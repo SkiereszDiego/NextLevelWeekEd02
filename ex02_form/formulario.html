@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="container">
+        <h1 id="titulo-form">FORMULÁRIO...</h1>
+        <hr>
+    <!--Tabela com duas colunas. A do lado esquerda em branco-->
+
+        <form action = 'arquivo.html' method = "post">
+
+        <br>Digite seu nome:<input type="text" name="login" size="40" placeholder="Nome completo"><br>
+        Digite sua idade:<input type="number" name="age"maxlength="3"><br>
+        Informe sua senha: <input type="password" name="senha" maxlength="8">(máximo de 8 caracteres)
+        
+        <br><br>Estado Civil:
+        <input type="radio" name="estcivil" checked>Solteiro
+        <input type="radio" name="estcivil"> Casado <br>
+        <input type="radio" name="estcivil"> Divorciado
+        <input type="radio" name="estcivil"> Viúvo
+        
+
+        <br>Nome do cônjuge:<input type="text" name="login" size="40"> (se casado)
+
+        <br><br>Leituras de sua preferência:
+        <input type="checkbox" name="genre1">Romance
+        <input type="checkbox" name="genre2">Ficção
+        <input type="checkbox" name="genre3">Suspense<br>
+        <input type="checkbox" name="genre4">Ação
+        <input type="checkbox" name="genre5">Drama
+        <input type="checkbox" name="genre6">Todas
+        <br>Nome de um livro: <input type="text" name="login" size="40"><br>
+
+        <br>Autor preferido:
+        <select name="autor">
+            <option value="JKR">J. K. Rowling</option>
+            <option value="GRRM" selected>George R. R. Martin</option>
+            <option value="PR">Patrick Rothfuss</option>
+        </select>
+
+        <br><br><input type="submit" value="Enviar">
+        <input type="reset" value="Limpar">
+        </form>
+        <hr>
+    </div>
+</body>
+</html>
